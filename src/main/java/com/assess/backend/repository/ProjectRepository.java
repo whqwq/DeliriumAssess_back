@@ -11,6 +11,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findAll();
     List<Project> findAllByDeletedFalse();
     Project findByProjectId(String projectId);
+    Project findByProjectIdAndDeletedFalse(String projectId);
     Void deleteByProjectId(String projectId);
     Project save(Project project);
 }

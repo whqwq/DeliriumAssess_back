@@ -20,7 +20,8 @@ public class RecordQuestion {
     private String answerContent;
     private String answerJudgement;
     private Long recordId;
+    private Boolean answerCorrect;
     public String toString() {
-        return "RecordQuestion(id=" + id+ ", questionNo=" + questionNo + ", questionContent=" + questionContent + ", answerContent=" + answerContent + ", answerJudgement=" + answerJudgement + ", recordId=" + recordId + ")";
+        return "RecordQuestion(id=" + this.getId() + ", questionNo=" + this.getQuestionNo() + ", questionContent=" + this.getQuestionContent() + ", answerContent=" + this.getAnswerContent() + ", answerJudgement=" + this.getAnswerJudgement() + ", recordId=" + this.getRecordId() + ", answerCorrect=" + this.getAnswerCorrect() + ")";
     }
 }

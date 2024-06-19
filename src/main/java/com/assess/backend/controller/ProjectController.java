@@ -24,6 +24,10 @@ public class ProjectController {
     public ResponseEntity<APIResponse> getAllProjects(@RequestHeader("phone") String phone) {
         return projectService.getAllProjects(phone);
     }
+    @RequestMapping("/getProjectInfo")
+    public ResponseEntity<APIResponse> getProjectInfo(@RequestBody Map<String, Object> data) {
+        return projectService.getProjectInfo(data);
+    }
     @RequestMapping("/createProject")
     public ResponseEntity<APIResponse> createProject(@RequestBody Map<String, Object> data) {
         return projectService.createProject(data);
@@ -35,5 +39,17 @@ public class ProjectController {
     @RequestMapping("/changeProjectInfo")
     public ResponseEntity<APIResponse> changeProjectInfo(@RequestBody Map<String, Object> data) {
         return projectService.changeProjectInfo(data);
+    }
+    @RequestMapping("/getProjectMembers")
+    public ResponseEntity<APIResponse> getProjectMembers(@RequestBody Map<String, Object> data) {
+        return projectService.getProjectMembers(data);
+    }
+    @RequestMapping("/addProjectMember")
+    public ResponseEntity<APIResponse> addProjectMember(@RequestBody Map<String, Object> data) {
+        return projectService.addProjectMember(data);
+    }
+    @RequestMapping("/deleteProjectMember")
+    public ResponseEntity<APIResponse> deleteProjectMember(@RequestBody Map<String, Object> data) {
+        return projectService.deleteProjectMember(data);
     }
 }

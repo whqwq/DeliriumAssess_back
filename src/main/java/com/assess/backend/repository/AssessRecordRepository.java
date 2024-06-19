@@ -12,4 +12,5 @@ public interface AssessRecordRepository extends JpaRepository<AssessRecord, Long
     Void deleteById(long id);
     AssessRecord save(AssessRecord assessRecord);
     List<AssessRecord> findAllByAssessmentId(long assessmentId);
+    AssessRecord findTopByAssessmentIdOrderByRecordTimeDesc(long assessmentId);
 }

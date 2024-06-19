@@ -11,5 +11,7 @@ public interface DoctorProjectRepository extends JpaRepository<DoctorProject, Lo
     DoctorProject findById(long id);
     Void deleteById(long id);
     DoctorProject save(DoctorProject doctorProject);
-    List<DoctorProject> findAllByDoctorPhone(String doctorPhone);
+    List<DoctorProject> findAllByDoctorId(long doctorId);
+    List<DoctorProject> findAllByProjectId(String projectId);
+    DoctorProject findByProjectIdAndDoctorId(String projectId, long doctorId);
 }

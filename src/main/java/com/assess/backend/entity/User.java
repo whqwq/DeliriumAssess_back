@@ -21,7 +21,7 @@ public class User {
     private String remark;
     private LocalDate createDate;
     private String hospitalName;
-    private Boolean deleted;
+    private Boolean deleted = false;
     public String toString() {
         return "User(id=" + id + ", phone=" + phone + ", password=" + password + ", name=" + name + ", remark=" + remark + ", createDate=" + createDate + ", hospitalName=" + hospitalName + ")";
     }

@@ -15,7 +15,7 @@ public class Project {
     private String projectId;
     private String projectName;
     private String description;
-    private Boolean deleted;
+    private Boolean deleted = false;
     public String toString() {
         return "Project(projectId=" + projectId+ ", projectName=" + projectName + ", description=" + description + ")";
     }

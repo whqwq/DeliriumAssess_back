@@ -25,7 +25,7 @@ public class Patient {
     private String patientIdInProject;
     private String hospitalNameInProject;
     private String hospitalIdInProject;
-    private Boolean deleted;
+    private Boolean deleted = false;
     public String toString() {
         return "Patient(id=" + id+ ", alpha=" + alpha + ", projectId=" + projectId + ", operateDate=" + operateDate + ", patientIdInProject=" + patientIdInProject + ", hospitalNameInProject=" + hospitalNameInProject + ", hospitalIdInProject=" + hospitalIdInProject + ")";
     }

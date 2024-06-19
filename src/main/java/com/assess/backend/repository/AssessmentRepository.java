@@ -10,4 +10,5 @@ public interface AssessmentRepository extends JpaRepository<Assessment, Long> {
     Void deleteById(long id);
     Assessment save(Assessment assessment);
     List<Assessment> findAllByPatientId(long patientId);
+    List<Assessment> findAllByPatientIdOrderByAssessTimeDesc(long patientId);
 }

@@ -22,11 +22,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/login")
-    public ResponseEntity<APIResponse> login(@RequestBody Map<String, Object> data) {
-        return userService.login(data);
-    }
-
     @RequestMapping("/getAllUsers")
     public ResponseEntity<APIResponse> getAllUsers(@RequestHeader("phone") String phone) {
         return userService.getAllUsers(phone);

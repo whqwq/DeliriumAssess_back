@@ -23,26 +23,6 @@ public class UserService {
         this.administratorRepository = administratorRepository;
     }
 
-    public ResponseEntity<APIResponse> login(Map<String, Object> data) {
-        String phone = data.get("phone").toString();
-        String password = data.get("password").toString();
-        User user = userRepository.findByPhone(phone);
-        Administrator administrator = administratorRepository.findByPhone(phone);
-        if (user == null && administrator == null) {
-            return ResponseEntity.ok(new APIResponse(1,"User does not exist"));
-        }
-        if (user != null && !user.getPassword().equals(password) || administrator != null && !administrator.getPassword().equals(password)) {
-            return ResponseEntity.ok(new APIResponse(2,"Password is incorrect"));
-        }
-        Map<String, Object> responseData = new HashMap<>();
-        responseData.put("phone", phone);
-        responseData.put("name", user != null ? user.getName() : administrator.getName());
-        responseData.put("id", user != null ? user.getId() : administrator.getId());
-        responseData.put("isAdmin", administrator != null);
-        responseData.put("token", "token");
-        return ResponseEntity.ok(new APIResponse(responseData));
-    }
-
     public ResponseEntity<APIResponse> getAllUsers(String phone) {
         Administrator administrator = administratorRepository.findByPhone(phone);
         if (administrator == null) {
@@ -55,6 +35,7 @@ public class UserService {
     public ResponseEntity<APIResponse> createUser(Map<String, Object> data) {
         String phone = data.get("phone").toString();
         if (userRepository.findByPhone(phone) != null) {
+            // todo deleted user can be restored
             return ResponseEntity.ok(new APIResponse(1,"User already exists"));
         }
         User user = new User();
@@ -72,7 +53,7 @@ public class UserService {
     public ResponseEntity<APIResponse> changePassword(Map<String, Object> data) {
         String phone = data.get("phone").toString();
         String password = data.get("password").toString();
-        User user = userRepository.findByPhone(phone);
+        User user = userRepository.findByPhoneAndDeletedFalse(phone);
         Administrator administrator = administratorRepository.findByPhone(phone);
         if (user == null && administrator == null) {
             return ResponseEntity.ok(new APIResponse(1,"User or Admin not found"));
@@ -95,7 +76,7 @@ public class UserService {
 
     public ResponseEntity<APIResponse> resetPassword(Map<String, Object> data) {
         String phone = data.get("phone").toString();
-        User user = userRepository.findByPhone(phone);
+        User user = userRepository.findByPhoneAndDeletedFalse(phone);
         if (user == null) {
             return ResponseEntity.ok(new APIResponse(1,"User not found"));
         }
@@ -106,7 +87,7 @@ public class UserService {
 
     public ResponseEntity<APIResponse> deleteUser(Map<String, Object> data) {
         String phone = data.get("phone").toString();
-        User user = userRepository.findByPhone(phone);
+        User user = userRepository.findByPhoneAndDeletedFalse(phone);
         if (user == null) {
             return ResponseEntity.ok(new APIResponse(1,"User not found"));
         }
@@ -117,7 +98,7 @@ public class UserService {
 
     public ResponseEntity<APIResponse> changeUserInfo(Map<String, Object> data) {
         String originalPhone = data.get("originalPhone").toString();
-        User user = userRepository.findByPhone(originalPhone);
+        User user = userRepository.findByPhoneAndDeletedFalse(originalPhone);
         if (user == null) {
             return ResponseEntity.ok(new APIResponse(1,"User not found"));
         }

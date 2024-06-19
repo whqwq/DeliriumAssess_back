@@ -16,12 +16,12 @@ public class DoctorProject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String doctorPhone;
+    private Long doctorId;
     private String projectId;
     private Boolean isLeader;
     private String hospitalNameInProject;
     private String hospitalIdInProject;
     public String toString() {
-        return "DoctorProject(id=" + id+ ", doctorPhone=" + doctorPhone + ", projectId=" + projectId + ", isLeader=" + isLeader + ", hospitalNameInProject=" + hospitalNameInProject + ", hospitalIdInProject=" + hospitalIdInProject + ")";
+        return "DoctorProject(id=" + id+ ", doctorId=" + doctorId + ", projectId=" + projectId + ", isLeader=" + isLeader + ", hospitalNameInProject=" + hospitalNameInProject + ", hospitalIdInProject=" + hospitalIdInProject + ")";
     }
 }

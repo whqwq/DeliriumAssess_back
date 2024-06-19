@@ -20,8 +20,8 @@ public class Assessment {
     private Long patientId;
     private LocalDateTime assessTime;
     private String scale;
-    private String assessorPhone;
+    private Long assessorId;
     public String toString() {
-        return "Assessment(id=" + id+ ", patientId=" + patientId + ", assessTime=" + assessTime + ", scale=" + scale + ", assessorPhone=" + assessorPhone + ")";
+        return "Assessment(id=" + id+ ", patientId=" + patientId + ", assessTime=" + assessTime + ", scale=" + scale + ", assessorId=" + assessorId + ")";
     }
 }
