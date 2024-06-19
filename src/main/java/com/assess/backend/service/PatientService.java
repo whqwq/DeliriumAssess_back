@@ -29,7 +29,7 @@ public class PatientService {
         this.assessmentRepository = assessmentRepository;
     }
     public ResponseEntity<APIResponse> getProjectPatients(Map<String, Object> data, String phone) {
-        String projectId = (String) data.get("projectId");
+        String projectId = data.get("projectId").toString();
         if (projectId == null) {
             return ResponseEntity.ok(new APIResponse(1, "projectId is required"));
         }
@@ -107,11 +107,12 @@ public class PatientService {
         // 创建一个DTO来传输格式化后的数据
         List<PatientAssessDTO> patientAssessDTOs = new ArrayList<>();
         for (Assessment assessment : assessments) {
-            if (userRepository.findById(assessment.getAssessorId()).isEmpty()) {
+            long assessorId = assessment.getAssessorId();
+            User assessor = userRepository.findById(assessorId);
+            if (assessor == null) {
                 return ResponseEntity.ok(new APIResponse(4, "Invalid assessorId"));
             }
-            User assessor = userRepository.findById(assessment.getAssessorId()).get();
-            PatientAssessDTO patientAssessDTO = new PatientAssessDTO(assessment.getId(), assessment.getAssessTime(), assessment.getScale(), assessment.getAssessorId(), assessor.getName(), assessor.getPhone());
+            PatientAssessDTO patientAssessDTO = new PatientAssessDTO(assessment.getId(), assessment.getAssessTime(), assessment.getAssessType(), assessment.getAssessorId(), assessor.getName(), assessor.getPhone());
             patientAssessDTOs.add(patientAssessDTO);
         }
         Map<String, Object> responseData = Map.of("patient", patient, "assessments", patientAssessDTOs);

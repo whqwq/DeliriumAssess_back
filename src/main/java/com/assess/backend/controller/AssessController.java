@@ -24,15 +24,15 @@ public class AssessController {
         return assessService.getAssess(data, phone);
     }
     @RequestMapping("/getAssessRecordDetails")
-    public ResponseEntity<APIResponse> getAssessRecordDetails(@RequestBody Map<String, Object> data) {
-        return assessService.getAssessRecordDetails(data);
+    public ResponseEntity<APIResponse> getAssessRecordDetails(@RequestBody Map<String, Object> data, @RequestHeader("phone") String phone) {
+        return assessService.getAssessRecordDetails(data, phone);
     }
     @RequestMapping("/submitAssess")
     public ResponseEntity<APIResponse> submitAssess(@RequestBody Map<String, Object> data, @RequestHeader("phone") String phone) {
         return assessService.submitAssess(data, phone);
     }
     @RequestMapping("/changeAssessRecord")
-    public ResponseEntity<APIResponse> changeAssessRecord(@RequestBody Map<String, Object> data) {
-        return assessService.changeAssessRecord(data);
+    public ResponseEntity<APIResponse> changeAssessRecord(@RequestBody Map<String, Object> data, @RequestHeader("phone") String phone) {
+        return assessService.changeAssessRecord(data, phone);
     }
 }

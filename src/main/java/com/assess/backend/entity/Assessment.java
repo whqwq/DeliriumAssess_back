@@ -19,9 +19,9 @@ public class Assessment {
     private Long id;
     private Long patientId;
     private LocalDateTime assessTime;
-    private String scale;
+    private String assessType;
     private Long assessorId;
     public String toString() {
-        return "Assessment(id=" + id+ ", patientId=" + patientId + ", assessTime=" + assessTime + ", scale=" + scale + ", assessorId=" + assessorId + ")";
+        return "Assessment(id=" + id+ ", " + "patientId=" + patientId + ", " + "assessTime=" + assessTime + ", " + "assessType=" + assessType + ", " + "assessorId=" + assessorId + ")";
     }
 }

@@ -128,10 +128,11 @@ public class ProjectService {
         List<DoctorProject> doctorProjects = doctorProjectRepository.findAllByProjectId(project.getProjectId());
         List<Map<String, Object>> members = new ArrayList<>();
         for (DoctorProject doctorProject : doctorProjects) {
-            if (userRepository.findById(doctorProject.getDoctorId()).isEmpty()) {
+            long doctorId = doctorProject.getDoctorId();
+            User user = userRepository.findById(doctorId);
+            if (user == null) {
                 continue;
             }
-            User user = userRepository.findById(doctorProject.getDoctorId()).get();
             Map<String, Object> member = Map.of(
                     "id", doctorProject.getDoctorId(),
                     "phone", user.getPhone(),
@@ -175,7 +176,7 @@ public class ProjectService {
         if (project == null) {
             return ResponseEntity.ok(new APIResponse(1, "Project not found"));
         }
-        if (userRepository.findById(doctorId).isEmpty()) {
+        if (userRepository.findById(doctorId) == null) {
             return ResponseEntity.ok(new APIResponse(2, "Doctor not found"));
         }
         DoctorProject doctorProject = doctorProjectRepository.findByProjectIdAndDoctorId(projectId, doctorId);

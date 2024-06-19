@@ -20,13 +20,13 @@ public class AssessRecord {
     private Long assessmentId;
     private LocalDateTime recordTime;
     private Long recorderId;
-    private Boolean isOrigin;
+    private Boolean isOriginal;
     private String changeReason = "";
     private Boolean feature1Positive = false;
     private Boolean feature2Positive = false;
     private Boolean feature3Positive = false;
     private Boolean feature4Positive = false;
     public String toString() {
-        return "AssessRecord(id=" + id + ", assessmentId=" + assessmentId + ", recordTime=" + recordTime + ", recorderId=" + recorderId + ", isOrigin=" + isOrigin + ", changeReason=" + changeReason + ", feature1Positive=" + feature1Positive + ", feature2Positive=" + feature2Positive + ", feature3Positive=" + feature3Positive + ", feature4Positive=" + feature4Positive + ")";
+        return "AssessRecord(id=" + id + ", assessmentId=" + assessmentId + ", recordTime=" + recordTime + ", recorderId=" + recorderId + ", isOriginal=" + isOriginal + ", changeReason=" + changeReason + ", feature1Positive=" + feature1Positive + ", feature2Positive=" + feature2Positive + ", feature3Positive=" + feature3Positive + ", feature4Positive=" + feature4Positive + ")";
     }
 }

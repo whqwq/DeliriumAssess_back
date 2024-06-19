@@ -1,4 +1,4 @@
-package com.assess.backend.DTO.GetPatientDetails;
+package com.assess.backend.DTO.GetAssess;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +9,12 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PatientAssessDTO {
-    private Long id;
+public class AssessDTO {
     private LocalDateTime assessTime;
     private String assessType;
-    private Long assessorId;
+    private Long patientId;
+    private char patientAlpha;
+    private String patientIdInProject;
     private String assessorName;
     private String assessorPhone;
 }
